@@ -5,9 +5,11 @@ import org.example.models.Comment;
 import org.example.services.CommentService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.logging.Logger;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Logger logger = Logger.getLogger(Main.class.getName());
 
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
@@ -16,6 +18,7 @@ public class Main {
         Comment comment = new Comment();
         comment.setAuthor("Nishal");
         comment.setText("Hello there!");
-        commentService.publishComment(comment);
+        String result = commentService.publishComment(comment);
+        logger.info("The result was " + result);
     }
 }
